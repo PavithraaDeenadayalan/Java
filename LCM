@@ -1,0 +1,33 @@
+import java.util.*;  
+
+public class Main  
+{  
+    public static void main(String[] args) {  
+        Scanner sc = new Scanner(System.in);  
+        System.out.println("Enter number 1 : ");  
+        int num1 = sc.nextInt();  
+        System.out.println("Enter number 2 : ");  
+        int num2 = sc.nextInt();  
+        
+        int big = 0, small = 0, i = 1;  
+
+        if (num1 > num2) {  
+            big = num1;  
+            small = num2;  
+        } else if (num2 > num1) {  
+            big = num2;  
+            small = num1;  
+        } else {  
+            System.out.println("Error: Give one number greater than another.");  
+            return; 
+        }  
+
+        while (true) {  
+            if (i * big % small == 0) {  
+                System.out.println("Lcm is : " + (i * big));  
+                break;  
+            }  
+            i++;  
+        }  
+    }  
+}

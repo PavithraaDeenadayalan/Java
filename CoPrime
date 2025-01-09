@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Main {  
+    public static void main(String[] args) throws InterruptedException {  
+        
+        Scanner sc = new Scanner(System.in);
+	    System.out.println("Enter number 1 : ");
+	    int a = sc.nextInt();
+	    System.out.println("Enter number 2 : ");
+	    int b = sc.nextInt();
+	    
+	    int temp;
+	    
+	    while (b > 0){
+	        temp = b;
+	        b = a % b ;
+	        a = temp;
+	        
+	        if ( a == 1){
+	            System.out.println("Co prime");
+	        }
+	    }
+	    
+    }  
+}

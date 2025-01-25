@@ -1,0 +1,26 @@
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    String a = "CYBERSECURTIY";
+	    String b = "aeiouAEIOU";
+	    StringBuilder r = new StringBuilder(); 
+        
+	    
+	    for( char i: a.toCharArray()){
+	        boolean d = false;  
+            for (char v : b.toCharArray()) {  
+                if (i == v) {  
+                    d = true;  
+                    break;  
+                }  
+            }  
+            if (!d) {  
+                r.append(i);  
+            }   
+	    }
+	   System.out.println(r.toString()); 
+	}
+}
+
+

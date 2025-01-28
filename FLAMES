@@ -1,0 +1,92 @@
+import java.util.*;  
+
+public class Main {  
+    public static void main(String[] args) {  
+        Scanner scanner = new Scanner(System.in);  
+
+        System.out.print("Enter the first string: ");  
+        String a = scanner.nextLine();  
+        System.out.print("Enter the second string: ");  
+        String b = scanner.nextLine();  
+
+        scanner.close();  
+  
+        char[] a1 = a.toCharArray();  
+        // System.out.println("Name 1: " + Arrays.toString(a1));  
+        char[] b1 = b.toCharArray();  
+        // System.out.println("Name 1: " + Arrays.toString(b1));  
+        
+        for( int i =0; i < a1.length ; i++){
+            for( int j =0; j < b1.length ; j++){
+            if(a1[i] == b1[j]){
+                a1[i] = '2';
+                b1[j] = '2';
+            }
+        }
+        }
+        
+        int countA = 0, countB = 0;  
+
+        for (char c : a1) {  
+            if (c != '2') {  
+                countA++;  
+            }  
+        }  
+
+        for (char c : b1) {  
+            if (c != '2') {  
+                countB++;  
+            }  
+        }  
+        
+        int count = countA + countB;
+    // System.out.println( Arrays.toString(a1));  
+    // System.out.println(Arrays.toString(b1));  
+    // System.out.println(count); 
+    
+    char[] f = {'F', 'L', 'A', 'M', 'E', 'S'};
+	int size = f.length;
+	int p = 0;
+		 
+		while(size != 1){
+		    
+		    p = (p + (count - 1)) % size;
+		    
+		    for (int i = p; i < size - 1; i++){
+		        f[i] = f[i+1];
+		    }
+		    
+		    size --;
+		}
+		char z = f[0];
+// 		System.out.println();
+// 		System.out.println(z);
+		
+		String relation;
+		switch (z) {
+            case 'F':
+                relation = "FRIEND";
+                break;
+            case 'L':
+                relation = "LOVE";
+                break;
+            case 'A':
+                relation = "AFFECTION";
+                break;
+            case 'M':
+                relation = "MARRIAGE";
+                break;
+            case 'E':
+                relation = "ENEMY";
+                break;
+            case 'S':
+                relation = "SISTER";
+                break;
+            default:
+                relation = "UNKNOWN";
+        }
+        
+    System.out.println();
+    System.out.println("The Relation is between " + a + " and " + b + " is : " + relation);
+    }  
+}

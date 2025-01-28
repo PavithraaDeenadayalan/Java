@@ -1,0 +1,21 @@
+public class Main
+{
+	public static void main(String[] args) {
+		int count = 5;
+		 char[] f = {'A', 'B', 'C', 'D', 'E', 'F'};
+		 int size = f.length;
+		 int a = 0;
+		 
+		while(size != 1){
+		    
+		    a = (a + (count - 1)) % size;
+		    
+		    for (int i = a; i < size - 1; i++){
+		        f[i] = f[i+1];
+		    }
+		    
+		    size --;
+		}
+		System.out.println(f[0]);
+	}
+}

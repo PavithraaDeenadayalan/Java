@@ -1,0 +1,68 @@
+class Emp{
+    static String company = "abc";
+    String name;
+    int e_id;
+    double salary;
+    
+    Emp(String name,int e_id, double salary){
+        this.name = name;
+        this.e_id = e_id;
+        this.salary = salary;
+    }
+    
+    void display(){
+        System.out.println();
+        System.out.println("Name:"+ name);
+        System.out.println("Employee Id:"+ e_id);
+        System.out.println("Salary:"+ salary);
+    }
+    
+    int tax = 10;
+    void tax(){
+        System.out.println("Tax amount is : $ " + salary*0.1);
+    }
+}
+class BoardMembers extends Emp{
+    
+     BoardMembers(String name, int e_id, double salary) {  
+        super(name, e_id, salary);  
+    } 
+    
+    double percent = 20;
+    void profitShare(){
+        System.out.println("ProfitShare is : $ " + salary * 0.20);
+    }
+}
+
+class Directors extends BoardMembers{
+    
+    Directors(String name, int e_id, double salary) {  
+        super(name, e_id, salary);  
+    }  
+    
+    double amt;
+    void Allowance(){
+        System.out.println("Allowance amount: $ " + amt);
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		Emp e = new Emp("Pavi", 123, 10000);
+		e.display();
+		e.tax();
+		
+		BoardMembers b = new BoardMembers("John", 456, 15000);
+		b.display();
+		b.tax();
+		b.profitShare();
+		
+		Directors d = new Directors("Alice", 789, 20000);
+		d.display();
+		d.tax();
+		d.profitShare();
+		d.amt = 10000;
+		d.Allowance();
+	}
+}

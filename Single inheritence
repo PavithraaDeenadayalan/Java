@@ -1,0 +1,25 @@
+class vehicle{
+    String brand;
+    int speed;
+    void start()
+    {
+        System.out.println("vehicle");
+    }
+}
+class car extends vehicle{
+    int seat = 10;
+    void horn(){
+        System.out.println("Car........");
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+		car c = new car();
+		c.start();
+		c.horn();
+		c.seat = 20;
+		System.out.println(c.seat);
+	}
+}

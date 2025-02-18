@@ -1,0 +1,33 @@
+class Student{
+    static String dept = "CyberSecurity";
+    String[] name;
+    double[] cgpa;
+    
+     Student(String[] name, double[] cgpa){
+         this.name = name;
+         this.cgpa = cgpa;
+     }
+    
+    void display(){
+        for (int i = 0; i < name.length; i++) {  
+            System.out.println("Name: " + name[i]);  
+            System.out.println("Cgpa: " + cgpa[i]);  
+            System.out.println("Dept: " + dept);  
+            System.out.println();  
+        }  
+    }
+}
+
+
+public class Main
+{
+	public static void main(String[] args) {
+		
+// 		Student s = new Student("Pavi", 9.9);
+        String[] names = {"abc", "def", "ghi", "jkl","mno"};
+        double[] marks = {9.0, 9.5, 8.7, 7.2, 6.8};
+        
+        Student s = new Student(names, marks);
+        s.display();  
+	}
+}

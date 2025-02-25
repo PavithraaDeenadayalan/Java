@@ -1,0 +1,39 @@
+class Lcm{
+    void lcm(int... num){
+        
+	    int lcm = num[0];
+	    int temp;
+	    
+	    for (int i = 0; i < num.length ; i++){
+	        
+	        int a = lcm;
+	        int b = num[i];
+	        int tempA = a;  
+            int tempB = b;  
+	        
+	        while (b > 0){
+	        temp = b;
+	        b = a % b ;
+	        a = temp;
+	    }
+	    
+	    int gcd = a;  
+            
+            lcm = (tempA * tempB) / gcd; 
+        }  
+ 
+        System.out.println("LCM of the array is: " + lcm); 
+		
+    }
+}
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	   Lcm l = new Lcm();
+	   l.lcm(8, 24, 15, 30, 36);
+	   l.lcm(15, 10);
+	   l.lcm(1,2);
+	}
+}

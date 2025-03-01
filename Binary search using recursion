@@ -7,7 +7,7 @@ public class Main
         if (left > right) {  
             return 200;   
         }  
-        
+        //int mid = left + (right - left) / 2; 
         int mid = (right + left) / 2;  
         
         if (nums[mid] == n) {  

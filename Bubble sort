@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Main
+{
+    static void bubble (int n, int[] nums)
+    {
+        int temp;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n - i; j++)
+            { 
+                if (nums[j] > nums[j + 1])  
+                {   
+                    temp = nums[j];  
+                    nums[j] = nums[j + 1];  
+                    nums[j + 1] = temp;  
+                }  
+            }
+        }
+    }
+	public static void main(String[] args) 
+	{
+	   // int[] nums = {2, 3, 12, 56, 6, 34, 99, 102, 32};
+	   int[] nums = {45, -2, 67, 4, 89, 34, -56, 34, 5, 4, 67, 89, -90, 23, 0, 7};  
+	    bubble(nums.length - 1, nums);
+	    
+	   // System.out.println(Arrays.toString(nums));        // print an array with loop
+	    
+	    for (int a : nums)
+	    {
+	        System.out.println(a + " ");
+	    }
+	}
+}

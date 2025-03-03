@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Main
+{
+    static void selection (int n, int[] nums)
+    {
+        int temp, index;
+        
+        for (int i = 0; i < n - 1; i++) 
+        { 
+            index = i;  
+
+            for (int j = i + 1; j < n; j++) 
+            {  
+                if (nums[j] < nums[index]) 
+                {  
+                    index = j; 
+                }  
+            }  
+
+            if (index != i) 
+            { 
+                temp = nums[i];  
+                nums[i] = nums[index];  
+                nums[index] = temp;  
+            }  
+        }  
+    }  
+
+	public static void main(String[] args) 
+	{
+	   // int[] nums = {2, 3, 12, 56, 6, 34, 99, 102, 32};
+	   
+	   int[] nums = {45, -2, 67, 4, 89, 34, -56, 34, 5, 4, 67, 89, -90, 23, 0, 7};
+	   
+	   selection(nums.length, nums);         // calling the selection sort method
+	    
+	   //System.out.println(nums.length);        // find length of an array 
+	    
+	   // System.out.println(Arrays.toString(nums));        // print an array with loop
+	    
+	    for (int a : nums)
+	    {
+	        System.out.print(a + " ");
+	    }
+	}
+}

@@ -1,0 +1,122 @@
+class Linkedlist 
+{
+    Node head;
+    
+    class Node{
+        
+        int data;
+        Node next;
+        
+        Node(int val)
+        {
+            data = val;
+            next = null;
+        }
+    }
+    
+    Linkedlist()
+    {
+        head = null;
+    }
+    
+    void insert(int val)
+    {
+        Node n = new Node(val);
+        
+        if (head == null)
+        {
+            head = n;
+            return;
+            
+        }else
+        {
+            n.next = head;
+            head = n;
+        }
+    }
+    
+    void display()
+    {
+        Node temp = head;
+        
+        while (temp != null)
+        {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+    }
+    
+    void insertpos(int p, int val)
+    {
+        Node n = new Node(val);
+        
+         if (p == 0) 
+         {  
+            insert(val);
+            return;  
+        }
+        else
+        {
+            Node temp = head;
+            
+            for (int i = 1; i < p - 1; i++)
+            {
+                if (temp == null) 
+                {
+                    System.out.println("Position out of bounds");
+                    return;
+                }
+                
+                temp = temp.next;   
+            }
+            
+            n.next = temp.next;
+            temp.next = n;
+        
+        }
+  
+    }
+    
+    void delete(int p)
+    {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+        
+        Node temp = head;
+        
+        for (int i = 1; i <p-1; i++)
+        {
+            temp = temp.next;
+        }
+        
+        temp.next = temp.next.next;
+    }
+}
+
+
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    Linkedlist l = new Linkedlist();
+	    l.insert(100);
+	    l.insert(200);
+	    l.insert(300);
+	    l.insert(400);
+	    l.insert(500);
+	    l.display();
+	    System.out.println(" ");
+	    System.out.println("------------------------------------");
+	    l.insertpos(3,500000);
+	    l.display();
+	    System.out.println(" ");
+	    System.out.println("------------------------------------");
+	    l.delete(3);
+	    l.display();
+	   
+	}
+}

@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+        int i = 0, j = 0;
+	    int count = 0;
+	    int g[] = {1,2,3}, s[] = {1,1};
+	    
+	    Arrays.sort(g); // Sort greed factors
+        Arrays.sort(s); // Sort cookie sizes
+	    
+        while (i < g.length && j < s.length) {
+            if (s[j] >= g[i]) { // If cookie can satisfy child
+                count++;
+                i++; // Move to the next child
+            }
+            j++; // Move to the next cookie
+        }
+
+		System.out.println(count);
+	}
+}

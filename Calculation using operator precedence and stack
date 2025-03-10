@@ -1,0 +1,82 @@
+import java.util.*;
+
+public class Main
+{
+    public static int precen(char a)
+    {
+        switch(a)
+        {
+            case '+':
+            case '-': return 1;
+            case '*':
+            case '/': return 2;
+        }
+        return -1;
+    }
+    
+    public static int process(int n1, int n2, char sy)
+    {
+        switch(sy)
+        {
+            case '+': return n1+n2;
+            case '-': return n1-n2;
+            case '*': return n1*n2;
+            case '/': return n1/n2;
+        }
+        return 0;
+    }
+    
+    public static int eval(String exp)
+    {
+        Stack <Integer> nums = new Stack <> ();
+        Stack <Character> sym = new Stack <> ();
+        
+        int i =0;
+        while(i < exp.length())
+        {
+            if (Character.isDigit(exp.charAt(i)))
+            {
+                int num = 0;
+                while(i < exp.length() && Character.isDigit(exp.charAt(i)))
+                {
+                    num = num*10 + (exp.charAt(i) - '0');
+                    i++;
+                }
+                nums.push(num);
+                i--;
+            }else{
+                
+                
+                while (!sym.isEmpty() && (precen(sym.peek()) >= precen(exp.charAt(i))))
+                {
+                    int n2 = nums.pop();
+                    int n1 = nums.pop();
+                    char sy = sym.pop();
+                    int res = process(n1, n2, sy);
+                    nums.push(res);
+                }
+                
+                sym.push(exp.charAt(i));
+            }
+            
+            i++;
+        }
+            
+            while (!sym.isEmpty()) {  
+            int n2 = nums.pop();  
+            int n1 = nums.pop();  
+            char sy = sym.pop();  
+            int result = process(n1, n2, sy);  
+            nums.push(result);  
+        }  
+
+        return nums.pop();  
+    }
+    
+	public static void main(String[] args) {
+	    
+	    
+		System.out.println(eval("10+20-30/3+10-3*2"));
+		System.out.println(eval("100+2/5+10-3"));
+	}
+}

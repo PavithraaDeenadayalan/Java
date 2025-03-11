@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main
+{
+    public static boolean cal(String a)
+    {
+        Stack <Character> s = new Stack<>();
+        HashMap<Character, Character> pair = new HashMap<>();
+        pair.put(')','(');
+        pair.put('}','{');
+        pair.put(']','[');
+        
+        for (char ch : a.toCharArray())
+        {
+            if (pair.containsValue(ch))
+            {
+                s.push(ch);
+            }
+            else if (pair.containsKey(ch)){
+                
+                    if (pair.get(ch) != s.peek() || s.isEmpty())
+                {
+                    return false;
+                }
+                else{
+                    s.pop();
+                }
+                
+            }
+        }
+        return s.isEmpty();
+    }
+	public static void main(String[] args) {
+	    
+		System.out.println(cal("{}("));
+		System.out.println(cal("{}()"));
+		System.out.println(cal("{()}"));
+	}
+}
+

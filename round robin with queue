@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main
+{
+    public static int Calculate(int time, int[] task)
+    {
+        Queue <Integer> n = new LinkedList<>();
+        int total = 0;
+        
+        for(int a : task)
+        {
+            n.add(a);
+        }
+        
+        while(!n.isEmpty())
+        {
+            int x = n.poll();
+            
+            if ( x > time)
+            {
+                n.add(x-time);
+                total = total +time;
+            }else{
+                total += x;
+            }
+        }
+        return total;
+    }
+    
+	public static void main(String[] args) {
+	    
+	    int time = 4;
+	    int[] task = {5,6,2,7};
+	   // int[] task = {10,2,5,7};
+	    System.out.println(Calculate(time, task));
+	}
+}

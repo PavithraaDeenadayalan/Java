@@ -1,0 +1,23 @@
+import java.util.Stack;
+import java.util.HashMap;
+
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> stack = new Stack<>();
+        HashMap<Character, Character> pair = new HashMap<>();
+        pair.put(')', '(');
+        pair.put('}', '{');
+        pair.put(']', '[');
+        
+        for (char ch : s.toCharArray()) {
+            if (pair.containsValue(ch)) {
+                stack.push(ch);
+            } else {
+                if (stack.isEmpty() || stack.pop() != pair.get(ch)) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}

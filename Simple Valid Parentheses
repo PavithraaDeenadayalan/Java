@@ -18,7 +18,7 @@ public class Main
             }
             else if (pair.containsKey(ch)){
                 
-                    if (pair.get(ch) != s.peek() || s.isEmpty())
+                    if ( s.isEmpty() || pair.get(ch) != s.peek() )
                 {
                     return false;
                 }

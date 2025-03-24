@@ -1,0 +1,137 @@
+class Node {
+    int val, ht;
+    Node left, right;
+
+    Node(int val) {
+        this.val = val;
+        ht = 1;
+    }
+}
+
+class AVL {
+    int getHeight(Node node) {
+        return node == null ? 0 : node.ht;
+    }
+
+    int getBal(Node node) {
+        return node == null ? 0 : getHeight(node.left) - getHeight(node.right);
+    }
+
+    Node right(Node y) {
+        Node x = y.left;
+        Node temp = x.right;
+
+        x.right = y;
+        y.left = temp;
+
+        y.ht = Math.max(getHeight(y.left), getHeight(y.right)) + 1;
+        x.ht = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
+
+        return x;
+    }
+
+    Node left(Node y) {
+        Node x = y.right;
+        Node temp = x.left;
+
+        x.left = y;
+        y.right = temp;
+
+        y.ht = Math.max(getHeight(y.left), getHeight(y.right)) + 1;
+        x.ht = Math.max(getHeight(x.left), getHeight(x.right)) + 1;
+
+        return x;
+    }
+
+    Node leftright(Node y) {
+        y.left = left(y.left);
+        return right(y);
+    }
+
+    Node rightleft(Node y) {
+        y.right = right(y.right);
+        return left(y);
+    }
+
+    Node insert(Node node, int val) {
+        if (node == null) {
+            return new Node(val);
+        }
+
+        if (val < node.val) {
+            node.left = insert(node.left, val);
+        } else if (val > node.val) {
+            node.right = insert(node.right, val);
+        } else {
+            return node;
+        }
+
+        // Update height
+        node.ht = Math.max(getHeight(node.left), getHeight(node.right)) + 1;
+        int bal = getBal(node);
+
+        // Balance the tree
+        if (bal > 1 && val < node.left.val)
+            return right(node);
+        if (bal < -1 && val > node.right.val)
+            return left(node);
+        if (bal > 1 && val > node.left.val)
+            return leftright(node);
+        if (bal < -1 && val < node.right.val)
+            return rightleft(node);
+
+        return node;
+    }
+
+    // Inorder Traversal (Left, Root, Right)
+    void inorder(Node node) {
+        if (node != null) {
+            inorder(node.left);
+            System.out.print(node.val + " ");
+            inorder(node.right);
+        }
+    }
+
+    // Preorder Traversal (Root, Left, Right)
+    void preorder(Node node) {
+        if (node != null) {
+            System.out.print(node.val + " ");
+            preorder(node.left);
+            preorder(node.right);
+        }
+    }
+
+    // Postorder Traversal (Left, Right, Root)
+    void postorder(Node node) {
+        if (node != null) {
+            postorder(node.left);
+            postorder(node.right);
+            System.out.print(node.val + " ");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        AVL tree = new AVL();
+        Node root = null;
+        int[] values = {20, 30, 25, 28, 35, 40, 45, 50, 36};
+
+        for (int val : values) {
+            root = tree.insert(root, val);
+        }
+
+        // Print traversals
+        System.out.print("Inorder: ");
+        tree.inorder(root);
+        System.out.println();
+
+        System.out.print("Preorder: ");
+        tree.preorder(root);
+        System.out.println();
+
+        System.out.print("Postorder: ");
+        tree.postorder(root);
+        System.out.println();
+    }
+}

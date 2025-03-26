@@ -1,0 +1,39 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        // Step 1: Create the adjacency list (Graph)
+        ArrayList<Integer>[] graph = new ArrayList[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        // Step 2: Fill the graph with dependencies
+        for (int[] pair : prerequisites) {
+            graph[pair[1]].add(pair[0]);  // pair[1] → pair[0]
+        }
+
+        // Step 3: Visited array to track cycle detection
+        int[] visited = new int[numCourses];
+
+        // Step 4: Check for cycles in all courses
+        for (int i = 0; i < numCourses; i++) {
+            if (visited[i] == 0 && !dfs(graph, visited, i)) {
+                return false;  // Cycle detected
+            }
+        }
+        return true;  // No cycle found
+    }
+
+    private boolean dfs(ArrayList<Integer>[] graph, int[] visited, int course) {
+        if (visited[course] == 1) return false;  // Cycle detected
+        if (visited[course] == 2) return true;   // Already visited
+
+        visited[course] = 1;  // Mark as being visited
+
+        for (int nextCourse : graph[course]) {
+            if (!dfs(graph, visited, nextCourse)) return false;
+        }
+
+        visited[course] = 2;  // Mark as fully explored
+        return true;
+    }
+}

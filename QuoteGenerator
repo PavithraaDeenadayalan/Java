@@ -1,0 +1,17 @@
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] quotes = {
+            "Believe you can and you're halfway there. – Theodore Roosevelt",
+            "Opportunities don't happen. You create them. – Chris Grosser",
+            "Don't watch the clock; do what it does. Keep going. – Sam Levenson",
+            "The only way to do great work is to love what you do. – Steve Jobs",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill"
+        };
+
+        Random random = new Random();
+        int index = random.nextInt(quotes.length);
+        System.out.println("💡 Quote of the Day: " + quotes[index]);
+    }
+}

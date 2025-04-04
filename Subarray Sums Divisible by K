@@ -1,0 +1,16 @@
+import java.util.Arrays;
+
+class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+        int[] modCount = new int[k];
+        int currentMod = 0, subarrayCount = 0;
+        modCount[0] = 1;
+
+        for (int num : nums) {
+            currentMod = (currentMod + num % k + k) % k;
+            subarrayCount += modCount[currentMod]++;
+        }
+        
+        return subarrayCount;
+    }
+}

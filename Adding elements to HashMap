@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    HashMap <String, Integer> nameList = new HashMap<> ();
+	    
+	    nameList.put("Pavi", 1);
+	    nameList.put("Abc", 2);
+	    nameList.put("Pqr", 3);
+	    nameList.put("Ghi", 4);
+	    nameList.put("xyz", 5);
+	    
+		System.out.println(nameList);
+		
+	}
+}

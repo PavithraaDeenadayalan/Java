@@ -1,0 +1,24 @@
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	    	
+		String[] task = {"A", "A", "A", "C", "B", "A", "A", "B", "B"};
+		HashMap <String, Integer> hm = new HashMap<> ();
+		
+		for(String i : task)
+		{
+		    if (hm.containsKey(i))
+		    {
+		        hm.put(i, hm.get(i)+1);
+		    }else{
+		       hm.put(i, 1);
+		    }
+		}
+
+		System.out.println(hm);
+		
+	}
+}

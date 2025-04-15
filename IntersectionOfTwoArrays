@@ -1,0 +1,17 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        int[] found = new int[1001];
+        int[] answer = new int[Math.min(nums1.length, nums2.length)];
+        int k = 0;
+        for (int i = 0; i < nums1.length; i++) {
+            found[nums1[i]]++;
+        } 
+        for (int i = 0; i < nums2.length; i++) {
+            if (found[nums2[i]] > 0) {
+                answer[k++] = nums2[i];
+                found[nums2[i]]--;
+            }  
+        }
+        return Arrays.copyOfRange(answer, 0, k);
+    }
+}

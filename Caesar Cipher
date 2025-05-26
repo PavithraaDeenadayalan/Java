@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String message = sc.nextLine();
+        int key = sc.nextInt();
+
+        if (key < 1 || key > 25) {
+            System.out.println("INVALID INPUT");
+            return;
+        }
+
+        StringBuilder encrypted = new StringBuilder();
+
+        for (char ch : message.toCharArray()) {
+            if (Character.isLowerCase(ch)) {
+                // Shift within 'a' to 'z'
+                char shifted = (char) ('a' + (ch - 'a' + key) % 26);
+                encrypted.append(shifted);
+            } else if (Character.isUpperCase(ch)) {
+                // Shift within 'A' to 'Z'
+                char shifted = (char) ('A' + (ch - 'A' + key) % 26);
+                encrypted.append(shifted);
+            } else if (Character.isDigit(ch)) {
+                // Shift digits 0-9
+                char shifted = (char) ('0' + (ch - '0' + key) % 10);
+                encrypted.append(shifted);
+            } else {
+                // Keep spaces & symbols unchanged
+                encrypted.append(ch);
+            }
+        }
+
+        System.out.println(encrypted.toString());
+    }
+}

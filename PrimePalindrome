@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        while (true) {
+            if (isPalindrome(n) && isPrime(n)) {
+                System.out.println(n);
+                break;
+            }
+            // Optimization: Skip even numbers > 2
+            if (n > 11 && n % 2 == 0) n++;
+            else n++;
+        }
+    }
+
+    static boolean isPalindrome(int num) {
+        String s = Integer.toString(num);
+        int l = 0, r = s.length() - 1;
+        while (l < r) if (s.charAt(l++) != s.charAt(r--)) return false;
+        return true;
+    }
+
+    static boolean isPrime(int num) {
+        if (num < 2) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (int i = 3; i * i <= num; i += 2)
+            if (num % i == 0) return false;
+        return true;
+    }
+}

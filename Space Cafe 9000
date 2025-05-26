@@ -1,0 +1,50 @@
+import java.util.*;
+
+public class SpaceCafe {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char main = sc.next().charAt(0);
+        int sub = sc.nextInt();
+
+        String prefix = "Welcome to Space Cafe 9000!\nEnjoy your ";
+        String error = "INVALID OPTION!";
+
+        if (main == 'C') {
+            switch (sub) {
+                case 1: System.out.println(prefix + "Espresso Coffee!"); break;
+                case 2: System.out.println(prefix + "Cappuccino Coffee!"); break;
+                case 3: System.out.println(prefix + "Latte Coffee!"); break;
+                default: System.out.println(error);
+            }
+        } else if (main == 'T') {
+            switch (sub) {
+                case 1: System.out.println(prefix + "Plain Tea!"); break;
+                case 2: System.out.println(prefix + "Assam Tea!"); break;
+                case 3: System.out.println(prefix + "Ginger Tea!"); break;
+                case 4: System.out.println(prefix + "Cardamom Tea!"); break;
+                case 5: System.out.println(prefix + "Masala Tea!"); break;
+                case 6: System.out.println(prefix + "Lemon Tea!"); break;
+                case 7: System.out.println(prefix + "Green Tea!"); break;
+                case 8: System.out.println(prefix + "Organic Darjeeling Tea!"); break;
+                default: System.out.println(error);
+            }
+        } else if (main == 'S') {
+            switch (sub) {
+                case 1: System.out.println(prefix + "Hot and Sour Soup!"); break;
+                case 2: System.out.println(prefix + "Veg Corn Soup!"); break;
+                case 3: System.out.println(prefix + "Tomato Soup!"); break;
+                case 4: System.out.println(prefix + "Spicy Tomato Soup!"); break;
+                default: System.out.println(error);
+            }
+        } else if (main == 'B') {
+            switch (sub) {
+                case 1: System.out.println(prefix + "Hot Chocolate Drink!"); break;
+                case 2: System.out.println(prefix + "Badam Drink!"); break;
+                case 3: System.out.println(prefix + "Badam-Pista Drink!"); break;
+                default: System.out.println(error);
+            }
+        } else {
+            System.out.println(error);
+        }
+    }
+}

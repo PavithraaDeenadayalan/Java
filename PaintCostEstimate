@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int interiorCount = sc.nextInt();
+        int exteriorCount = sc.nextInt();
+
+        double totalCost = 0.0;
+
+        // Read interior areas line only if interiorCount > 0
+        if (interiorCount > 0) {
+            String interiorLine = sc.nextLine().replace(",", "").trim();
+            String[] interiorAreas = interiorLine.split("\\s+");
+            for (int i = 0; i < interiorCount; i++) {
+                totalCost += Double.parseDouble(interiorAreas[i]) * 18;
+            }
+        }
+
+        // Read exterior areas line only if exteriorCount > 0
+        if (exteriorCount > 0) {
+            String exteriorLine = sc.nextLine().replace(",", "").trim();
+            String[] exteriorAreas = exteriorLine.split("\\s+");
+            for (int i = 0; i < exteriorCount; i++) {
+                totalCost += Double.parseDouble(exteriorAreas[i]) * 12;
+            }
+        }
+
+        System.out.printf("Total estimated Cost: %.1f INR", totalCost);
+    }
+}

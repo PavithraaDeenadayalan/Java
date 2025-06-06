@@ -1,4 +1,4 @@
-//Array List
+//Array List and for linkedlist same just change the type to Linkedlist<> and instead of set use add to add at specific index
 import java.util.*;
 
 public class Main

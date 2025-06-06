@@ -1,0 +1,20 @@
+public class Main
+{
+    void mul (int a , int b){
+        System.out.println(a*b);
+    }
+    
+	public static void main(String[] args) {
+	    int[] arr = {1, 2,3, 4, 5, 6};
+	    
+	    for(int v : arr) System.out.print(v+ " ");          // enhanced for loop
+	    System.out.println(" ");
+	    
+	    int[] newarr = arr;         // copying one array to another
+	    for(int va : newarr) System.out.print(va+ " ");
+	    
+	    //even though mul method is in main class we have to use either static eyword to the method or a object to access mul method!
+	    Main m = new Main();
+	    m.mul(2,3);
+	}
+}

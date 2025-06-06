@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+class Main {
+    
+    static void asc(int[] arr){
+        for(int i = 0; i < arr.length - 1; i++){
+            for(int j = 0; j < arr.length - i - 1; j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+    
+    static void desc(int[] arr){
+        for(int i = 0; i < arr.length - 1; i++){
+            for(int j = 0; j < arr.length - i - 1; j++){
+                if(arr[j] < arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+    
+    static void printArr(int[] arr){
+        System.out.print("Printing array: ");
+        for(int v: arr) System.out.print(v + " ");
+        System.out.println();
+    }
+    
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+        
+        int[] arr = new int[size];
+        System.out.print("Enter the elements for the array: ");
+        
+        for(int i = 0; i < size; i++) arr[i] = sc.nextInt();
+        
+        printArr(arr);
+        asc(arr);
+        printArr(arr);
+        desc(arr);
+        printArr(arr);
+    }
+}

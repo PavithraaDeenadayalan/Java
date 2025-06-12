@@ -1,0 +1,30 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows < 2 || s == null || s.length() < numRows) return s;
+
+        int n = s.length();
+        
+        int zigLen = (numRows - 1) * 2;
+        char[] chars = new char[n];
+        int pos = 0;
+
+        
+        for (int row = 0; row < numRows; row++) {
+            int i = row;
+            while (i < n) {
+                chars[pos++] = s.charAt(i);
+
+                if (row != 0 && row != numRows -1) {
+                    int second = i + (zigLen - 2 * row);
+                    if (second < n) {
+                        chars[pos++] = s.charAt(second);
+                    }
+                }
+
+                i += zigLen;
+            }
+        }
+
+        return new String(chars);
+    }
+}

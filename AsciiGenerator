@@ -1,0 +1,43 @@
+import java.util.Random;
+
+public class RandomAsciiArtGenerator {
+
+    private static final String[] shapes = {
+            "    *\n   ***\n  *****\n *******\n*********\n",
+            "*******\n*     *\n*     *\n*     *\n*******\n",
+            "   ***   \n  *   *  \n *     * \n  *   *  \n   ***   \n",
+            "#######\n#     #\n#     #\n#     #\n#######\n",
+            "    @     \n   @@@    \n  @@@@@   \n @@@@@@@  \n@@@@@@@@@ \n",
+            "#####\n#   #\n#   #\n#####\n"
+    };
+
+    private static final String[] patterns = {
+            "+++++++====++++++====+++++++",
+            "************    ************",
+            "#####*****#####*****#####",
+            "~~~~~~~~~~~~  ~~~~~~~~~~~~",
+            "@@@@@@    @@@@@@    @@@@@@",
+            "&&&&&&&&&&&&&&&&&&&&&&&&&&"
+    };
+
+    public static void main(String[] args) {
+        Random random = new Random();
+        int shapeIndex = random.nextInt(shapes.length);
+        int patternIndex = random.nextInt(patterns.length);
+
+        String selectedShape = shapes[shapeIndex];
+        String selectedPattern = patterns[patternIndex];
+
+        System.out.println("Welcome to the Random ASCII Art Generator!");
+        System.out.println("\nHere is your random shape:\n");
+        System.out.println(selectedShape);
+        
+        System.out.println("And here is your random pattern:\n");
+        System.out.println(selectedPattern);
+
+        // Combine both for a more unique output
+        String combined = selectedShape + "\n" + selectedPattern;
+        System.out.println("\nHere is a creative combination of both:\n");
+        System.out.println(combined);
+    }
+}

@@ -1,0 +1,34 @@
+class Solution {
+    public int compress(char[] chars) {
+        int len = 0;
+
+        char prev = chars[0];
+        int fr = 0,index = 0;
+        for(int i=0;i<chars.length;i++) {
+            if(chars[i] == prev) fr++;
+            else {
+                chars[index++] = prev;
+                if(fr > 1) {
+                    String freq = "" + fr;
+                    for(int j=0;j<freq.length();j++) chars[index++] = freq.charAt(j);
+                    len += freq.length();
+                }
+                len += 1;
+                prev = chars[i];
+                fr = 1;
+            } 
+        }
+
+        if(fr >= 1) {
+            chars[index++] = prev;
+            if(fr > 1) {
+                String freq = "" + fr;
+                for(int j=0;j<freq.length();j++) chars[index++] = freq.charAt(j);
+                len += freq.length();
+            }
+            len += 1;
+        }
+
+        return len;
+    }
+}

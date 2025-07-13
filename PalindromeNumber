@@ -1,0 +1,19 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        int lastd=0;
+        int revNum=0;
+        int dup=x;
+        
+        if(x<0){
+            return false;
+        }
+        while(x>0){
+         lastd=x%10;
+        x=x/10;
+        revNum=(revNum*10)+lastd;
+        }
+     return (dup==revNum);
+        
+      
+    }
+}
